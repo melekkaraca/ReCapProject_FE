@@ -8,11 +8,15 @@
             <th>Id</th>
             <th>Marka Adı</th>
             <th>Müteri Adı</th>
+            <th>Kiralama Tarihi</th>
+            <th>Teslim Tarihi</th>
         </tr>
     </thead>
     <tr *ngFor="let rentalDetail of rentalDetails">
         <td>{{rentalDetail.id}}</td>
         <td>{{rentalDetail.brandName}}</td>
         <td>{{rentalDetail.customerName}}</td>
+        <td>{{rentalDetail.rentDate}}</td>
+        <td>{{rentalDetail.returnDate}}</td>
     </tr>
 </table>
