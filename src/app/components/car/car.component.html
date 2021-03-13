@@ -1,1 +1,22 @@
-<p>car works!</p>
+<div *ngIf="dataLoaded==false" class="spinner-border text-secondary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+<table *ngIf="dataLoaded==true" class="table table-sm table-bordered ">
+    <thead>
+        <caption>Arabalar</caption>
+        <tr>
+            <th>Id</th>
+            <th>Araba Adı</th>
+            <th>Markası</th>
+            <th>Rengi</th>
+            <th>Günlük Ücreti</th>
+        </tr>
+    </thead>
+    <tr *ngFor="let car of carDetails">
+        <td>{{car.id}}</td>
+        <td>{{car.carName}}</td>
+        <td>{{car.brandName}}</td>
+        <td>{{car.colorName}}</td>
+        <td>{{car.dailyPrice}}</td>
+    </tr>
+</table>
