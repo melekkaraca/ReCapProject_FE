@@ -1,16 +1,8 @@
 <div *ngIf="dataLoaded==false" class="spinner-border text-secondary" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>
-<table *ngIf="dataLoaded==true" class="table table-sm table-bordered ">
-    <thead>
-        <caption>Markalar</caption>
-        <tr>
-            <th>Id</th>
-            <th>Marka Adı</th>
-        </tr>
-    </thead>
-    <tr *ngFor="let brand of brands">
-        <td>{{brand.id}}</td>
-        <td>{{brand.name}}</td>
-    </tr>
-</table>
+
+<ul *ngIf="dataLoaded==true" class="list-group">
+    <caption>Markalar</caption>
+    <li class="list-group-item" *ngFor="let brand of brands">{{brand.name}}</li>
+  </ul>
