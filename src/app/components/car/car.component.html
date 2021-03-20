@@ -10,13 +10,15 @@
             <th>Markası</th>
             <th>Rengi</th>
             <th>Günlük Ücreti</th>
+            <th>Detay</th>
         </tr>
     </thead>
     <tr *ngFor="let car of carDetails">
-        <td>{{car.id}}</td>
+        <td>{{car.carId}}</td>
         <td>{{car.carName}}</td>
         <td>{{car.brandName}}</td>
         <td>{{car.colorName}}</td>
         <td>{{car.dailyPrice}}</td>
+        <td><button (click)="setCurrentCar(car)" routerLink="/cars/carDetail/{{car.carId}}"  type="button" class="btn btn-sm btn-light">İncele</button></td>
     </tr>
 </table>

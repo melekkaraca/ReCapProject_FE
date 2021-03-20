@@ -1,0 +1,22 @@
+<div class="row ml-0 mr-0">
+  <div class="col-md-8 offset-md-2 table-animations">
+      <div *ngIf="carDetail" class="mt-4">
+        <h3>{{carDetail.carName}}</h3>
+      <table class="table table-bordered">
+        <thead>
+          <th>Marka</th>
+          <th>Renk</th>
+          <th>Günlük Ücret</th>
+        </thead>
+        <tr>
+          <td>{{carDetail.brandName}}</td>
+          <td>{{carDetail.colorName}}</td>
+          <td>{{carDetail.dailyPrice}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div *ngFor="let image of carImages let index = index"  >
+    <img class="d-block  w-100" src="{{carImageBasePath}}{{image.imagePath}}" alt="First slide" width="150" height="100">
+  </div>
+</div>

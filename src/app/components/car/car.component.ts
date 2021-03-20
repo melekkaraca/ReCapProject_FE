@@ -12,7 +12,7 @@ export class CarComponent implements OnInit {
 
   carDetails:CarDetail[] = [];
   dataLoaded=false;
-
+  currentCar : CarDetail ;
   constructor(private carService : CarService,private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -23,6 +23,9 @@ export class CarComponent implements OnInit {
       }else if(params["colorId"])
       {
         this.getCarDetailsByColorId(params["colorId"])
+      }else if(params["carId"])
+      {
+        console.log(params["carId"]);
       }
       else
       {
@@ -51,5 +54,7 @@ export class CarComponent implements OnInit {
       this.dataLoaded = true;
     })
   }
-
+  setCurrentCar(car :CarDetail){
+    this.currentCar = car;
+  }
 }
