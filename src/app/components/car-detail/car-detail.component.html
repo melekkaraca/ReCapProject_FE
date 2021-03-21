@@ -1,3 +1,19 @@
+<div class="car-header">
+  Araba Detayları
+</div>
+<ul>
+  <li *ngFor="let image of carImages">
+      <img
+       src="{{apiUrl+image.imagePath}}" alt="">
+  </li>
+</ul>
+<!-- <ul *ngIf="carDetail" class="list-group">
+  <li class="list-group-item">{{carDetail.carName}}</li>
+  <li class="list-group-item">{{carDetail.brandName}}</li>
+  <li class="list-group-item">{{carDetail.colorName}}</li>
+  <li class="list-group-item">{{carDetail.dailyPrice}}</li>
+  <app-rental></app-rental> 
+</ul> -->
 <div class="row ml-0 mr-0">
   <div class="col-md-8 offset-md-2 table-animations">
       <div *ngIf="carDetail" class="mt-4">
@@ -16,7 +32,7 @@
       </table>
     </div>
   </div>
-  <div *ngFor="let image of carImages let index = index"  >
+  <!-- <div *ngFor="let image of carImages let index = index"  >
     <img class="d-block  w-100" src="{{carImageBasePath}}{{image.imagePath}}" alt="First slide" width="150" height="100">
   </div>
-</div>
+</div> -->

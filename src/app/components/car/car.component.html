@@ -1,6 +1,26 @@
 <div *ngIf="dataLoaded==false" class="spinner-border text-secondary" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>
+  <div class="mb-3">
+    <label for="filterText" class="form-label">Araba ara</label>
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText"
+        placeholder="araba ara">
+</div>
+<div *ngIf="filterText" class="alert alert-success">
+    {{filterText}} aradınız
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <select class="form-select" formControlName="brandId">
+            <option *ngFor="let brand of brands" [ngValue]="brand.id">{{brand.name |uppercase}}</option>
+          </select>
+    </div>
+    <div class="col-lg-6">
+      <select class="form-select" formControlName="colorId" >
+        <option *ngFor="let color of colors" [ngValue]="color.id">{{color.name |uppercase}}</option>
+      </select>
+    </div>
+</div>
 <table *ngIf="dataLoaded==true" class="table table-sm table-bordered ">
     <thead>
         <caption>Arabalar</caption>

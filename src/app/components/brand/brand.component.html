@@ -1,9 +1,12 @@
 <div *ngIf="dataLoaded==false" class="spinner-border text-secondary" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>
-
+<div>
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText"
+        placeholder="marka ara">
+</div>
 <ul *ngIf="dataLoaded==true" class="list-group">
   <li [class] = "getAllBrandClass()"  routeLink="/cars">Tüm Markalar</li>
   <li (click)="setCurrentBrand(brand)" [class]="getCurrentBrandClass(brand)" routerLink = "/cars/brands/{{brand.id}}" 
-  *ngFor="let brand of brands">{{brand.name}}</li>
+  *ngFor="let brand of brands |brandFilterPipe:filterText">{{brand.name |uppercase}}</li>
 </ul>

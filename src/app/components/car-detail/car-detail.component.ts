@@ -13,7 +13,7 @@ export class CarDetailComponent implements OnInit {
   carDetail: CarDetail;
   carImages: CarImage[] = [];
   carImageBasePath = "https://localhost:44332/";
-
+  apiUrl = "https://localhost:44332/";
   constructor(private activatedRoute:ActivatedRoute,
     private carService : CarService
     ) { }
