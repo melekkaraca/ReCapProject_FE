@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NaviComponent implements OnInit {
 
-  costumersPath = './costumers/All';
+  costumersPath = './costumers/all';
+  carsPath='./cars/all';
+  brandsPath='./brands/all';
+  colorsPath='./colors/all';
   constructor() { }
 
   ngOnInit(): void {

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'; //api bağlantı için eklendi
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'; //api bağlantı için eklendi
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -17,6 +17,11 @@ import { ToastrModule } from "ngx-toastr";
 import { BrandFilterPipePipe } from './pipes/brand-filter-pipe.pipe';
 import { CarFilterPipePipe } from './pipes/car-filter-pipe.pipe';
 import { ColorFilterPipePipe } from './pipes/color-filter-pipe.pipe';
+import { BrandsAllComponent } from './components/brands-all/brands-all.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ColorAllComponent } from './components/color-all/color-all.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +34,10 @@ import { ColorFilterPipePipe } from './pipes/color-filter-pipe.pipe';
     CarDetailComponent,
     BrandFilterPipePipe,
     CarFilterPipePipe,
-    ColorFilterPipePipe
+    ColorFilterPipePipe,
+    BrandsAllComponent,
+    LoginComponent,
+    ColorAllComponent
   ],
   imports: [
     BrowserModule,
@@ -41,9 +49,12 @@ import { ColorFilterPipePipe } from './pipes/color-filter-pipe.pipe';
     ToastrModule.forRoot({
         positionClass:"toast-bottom-right",
       }
-    )
+    ),
+    NgbModule
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

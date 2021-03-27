@@ -1,0 +1,77 @@
+<div class="mb-3">
+    <label for="filterText" class="form-label">Renk ara</label>&nbsp;
+    <input type="text" [(ngModel)]="filterText" id="filterTextColor" placeholder="renk ara">
+</div>
+<div *ngIf="filterText" class="alert alert-success">
+    {{filterText}} aradınız
+</div>
+<div class="text-right">
+  <button data-bs-toggle="modal" href="#modalAdd" type="button" class="btn btn-sm btn-primary">Yeni Ekle</button>
+</div>
+<table class="table table-sm table-bordered ">
+    <thead>
+        <caption>Renkler</caption>
+        <tr>
+            <th width="50">Id</th>
+            <th>Renk Adı</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tr *ngFor="let color of colors | colorFilterPipe:filterText">
+        <td>{{color.id}}</td>
+        <td>{{color.name |uppercase}}</td>
+        <td>
+            <button data-bs-toggle="modal" href="#modalUpdate" type="button" (click)="setCurrentColor(color)" class="btn btn-sm btn-warning">Düzenle</button>
+            <button data-bs-toggle="modal" (click)="delete(color)" type="button" class="btn btn-outline-danger">Sil</button>
+        </td>
+    </tr>
+</table>
+<div class="modal fade" id="modalAdd" aria-hidden="true"  aria-labelledby="..." tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Renk Ekle</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="colorAddForm">
+                <div class="mb-4 row">
+                    <label for="name" class="col-sm-3 col-form-label">Renk Adı</label>
+                    <div class="form-group col-sm-9">
+                        <input type="text" id="nameAdd" formControlName="name" class="form-control"
+                          />
+                    </div>
+                </div>
+            </form>
+          </div>
+        <div class="modal-footer">
+          <button class="btn btn-fill btn-sm btn-primary" (click)="add()">Ekle</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="modal fade" id="modalUpdate" aria-hidden="true"  aria-labelledby="..." tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Renk Düzenle</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="colorUpdateForm">
+                <div class="mb-4 row">
+                    <label for="name" class="col-sm-3 col-form-label">Renk Adı</label>
+                    <div class="form-group col-sm-9">
+                        <input type="text" id="nameUpdate" formControlName="name" class="form-control"
+                          value="{{currentColorName}}" />
+                    </div>
+                </div>
+            </form>
+          </div>
+        <div class="modal-footer">
+          <button class="btn btn-fill btn-sm btn-primary" (click)="update()">Güncelle</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

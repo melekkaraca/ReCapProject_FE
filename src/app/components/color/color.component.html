@@ -2,7 +2,7 @@
   <span class="visually-hidden">Loading...</span>
 </div>
 <div>
-  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="renk ara">
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterTextColor" placeholder="renk ara">
 </div>
 <ul *ngIf="dataLoaded==true" class="list-group">
   <li [class]="getAllColorClass()" routeLink="/cars">Tüm Renkler</li>
