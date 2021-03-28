@@ -20,7 +20,8 @@ const routes: Routes = [
   {path:"cars/all",component:CarComponent},
   {path:"brands/all",component:BrandsAllComponent,canActivate:[LoginGuard]},
   {path:"colors/all",component:ColorAllComponent,canActivate:[LoginGuard]},
-  {path:"login",component:LoginComponent}
+  {path:"login",component:LoginComponent},
+  {path:"cars/filter/:brandId/:colorId", component:CarComponent},
 ];
 
 @NgModule({

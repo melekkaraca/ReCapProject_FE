@@ -22,6 +22,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ColorAllComponent } from './components/color-all/color-all.component';
+import { CarFilterComponent } from './components/car-filter/car-filter.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,8 @@ import { ColorAllComponent } from './components/color-all/color-all.component';
     ColorFilterPipePipe,
     BrandsAllComponent,
     LoginComponent,
-    ColorAllComponent
+    ColorAllComponent,
+    CarFilterComponent
   ],
   imports: [
     BrowserModule,

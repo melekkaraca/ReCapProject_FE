@@ -1,26 +1,16 @@
 <div *ngIf="dataLoaded==false" class="spinner-border text-secondary" role="status">
     <span class="visually-hidden">Loading...</span>
-  </div>
-  <div class="mb-3">
+</div>
+<br>
+<app-car-filter></app-car-filter>
+<div class="mb-3">
     <label for="filterText" class="form-label">Araba ara</label>
-    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterTextCar"
-        placeholder="araba ara">
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterTextCar" placeholder="araba ara">
 </div>
 <div *ngIf="filterText" class="alert alert-success">
     {{filterText}} aradınız
 </div>
-<div class="row">
-    <div class="col-lg-6">
-        <select class="form-select" formControlName="brandId">
-            <option *ngFor="let brand of brands" [ngValue]="brand.id">{{brand.name |uppercase}}</option>
-          </select>
-    </div>
-    <div class="col-lg-6">
-      <select class="form-select" formControlName="colorId" >
-        <option *ngFor="let color of colors" [ngValue]="color.id">{{color.name |uppercase}}</option>
-      </select>
-    </div>
-</div>
+
 <table *ngIf="dataLoaded==true" class="table table-sm table-bordered ">
     <thead>
         <caption>Arabalar</caption>
@@ -33,12 +23,13 @@
             <th>Detay</th>
         </tr>
     </thead>
-    <tr *ngFor="let car of carDetails">
+    <tr *ngFor="let car of carDetails |carFilterPipe:filterText">
         <td>{{car.carId}}</td>
         <td>{{car.carName}}</td>
         <td>{{car.brandName}}</td>
         <td>{{car.colorName}}</td>
         <td>{{car.dailyPrice}}</td>
-        <td><button (click)="setCurrentCar(car)" routerLink="/cars/carDetail/{{car.carId}}"  type="button" class="btn btn-sm btn-light">İncele</button></td>
+        <td><button (click)="setCurrentCar(car)" routerLink="/cars/carDetail/{{car.carId}}" type="button"
+                class="btn btn-sm btn-light">İncele</button></td>
     </tr>
 </table>
