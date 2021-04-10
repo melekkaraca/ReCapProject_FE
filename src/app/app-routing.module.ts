@@ -8,6 +8,7 @@ import { ColorAllComponent } from './components/color-all/color-all.component';
 import { ColorComponent } from './components/color/color.component';
 import { CostumerComponent } from './components/costumer/costumer.component';
 import { LoginComponent } from './components/login/login.component';
+import { PaymentComponent } from './components/payment/payment.component';
 import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path:"colors/all",component:ColorAllComponent,canActivate:[LoginGuard]},
   {path:"login",component:LoginComponent},
   {path:"cars/filter/:brandId/:colorId", component:CarComponent},
+  {path:"payment/:carId",pathMatch:"full", component:PaymentComponent}
 ];
 
 @NgModule({

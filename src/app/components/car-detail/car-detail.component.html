@@ -3,17 +3,24 @@
 </div>
 <ul>
   <li *ngFor="let image of carImages">
-      <img
-       src="{{apiUrl+image.imagePath}}" alt="">
+      <img src="{{ apiUrl }}{{image.imagePath}}" alt="" width="150" height="100">
   </li>
 </ul>
-<!-- <ul *ngIf="carDetail" class="list-group">
-  <li class="list-group-item">{{carDetail.carName}}</li>
-  <li class="list-group-item">{{carDetail.brandName}}</li>
-  <li class="list-group-item">{{carDetail.colorName}}</li>
-  <li class="list-group-item">{{carDetail.dailyPrice}}</li>
-  <app-rental></app-rental> 
-</ul> -->
+<!-- <div id="carImageSlide" class="carousel slide carousel-fade" data-bs-ride="carousel">
+<div class="carousel-inner d-flex" style="height: 70vh; width: 80vh; margin-left: 18vh">
+  <div *ngFor="let carImage of carImages; index as i; first as firstImage" class="carousel-item align-self-center" 
+  [ngClass]="{ active: firstImage }" style="height: 100%; width: 100%" >
+    <img src="{{ apiUrl }}{{ carImage.imagePath }}" class="" style="height: 100%; width: 100%"/>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carImageSlide" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carImageSlide" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div> -->
 <div class="row ml-0 mr-0">
   <div class="col-md-8 offset-md-2 table-animations">
       <div *ngIf="carDetail" class="mt-4">
@@ -30,9 +37,34 @@
           <td>{{carDetail.dailyPrice}}</td>
         </tr>
       </table>
+      <button data-bs-toggle="modal" href="#modalKirala" type="button" class="btn btn-sm btn-primary">Kirala</button>
     </div>
   </div>
+
   <!-- <div *ngFor="let image of carImages let index = index"  >
-    <img class="d-block  w-100" src="{{carImageBasePath}}{{image.imagePath}}" alt="First slide" width="150" height="100">
+    <img class="d-block  w-100" src="{{apiUrl}}{{image.imagePath}}" alt="First slide" width="150" height="100">
+  </div> -->
+</div>
+<div class="modal fade" id="modalKirala" aria-hidden="true"  aria-labelledby="..." tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Kirala</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="form-inline" [formGroup]="rentForm">
+            <div class="form-group">
+              <div class="input-group">
+                <input class="form-control" placeholder="dd-mm-yyyy" type="date" formControlName="startDate" id="dpStartDate">
+                <input class="form-control" placeholder="dd-mm-yyyy" type="date" formControlName="endDate" id="dpEndDate">
+              </div>
+            </div>
+          </form>
+        </div>
+      <div class="modal-footer">
+        <button class="btn btn-fill btn-sm btn-primary" (click)="rent()" >Kirala</button>
+      </div>
+    </div>
   </div>
-</div> -->
+</div>
