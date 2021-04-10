@@ -24,6 +24,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ColorAllComponent } from './components/color-all/color-all.component';
 import { CarFilterComponent } from './components/car-filter/car-filter.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { RegisterComponent } from './components/register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,8 @@ import { PaymentComponent } from './components/payment/payment.component';
     LoginComponent,
     ColorAllComponent,
     CarFilterComponent,
-    PaymentComponent
+    PaymentComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

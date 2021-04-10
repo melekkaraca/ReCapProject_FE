@@ -1,0 +1,28 @@
+<body class="text-center">
+
+    <main class="form-signin">
+        <form [formGroup]="registerForm">
+            <!-- <img class="mb-4" src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+            <h1 class="h3 mb-3 fw-normal">Kayıt ol</h1>
+
+            <div class="form-floating">
+                <input formControlName="firstName" type="text" class="form-control" id="firsName">
+                <label for="firsName">Ad</label>
+            </div>
+            <div class="form-floating">
+                <input formControlName="lastName" type="text" class="form-control" id="lastName">
+                <label for="lastName">Soyad</label>
+            </div>
+            <div class="form-floating">
+                <input formControlName="email" type="email" class="form-control" id="email">
+                <label for="email">Eposta</label>
+            </div>
+            <div class="form-floating">
+                <input formControlName="password" type="password" class="form-control" id="floatingPassword">
+                <label for="floatingPassword">Parola</label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" (click)="register()">Kayıt Ol</button>
+            <p class="mt-5 mb-3 text-muted">&copy; 2020–2021</p>
+        </form>
+    </main>
+</body>
