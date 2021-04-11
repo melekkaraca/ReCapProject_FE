@@ -12,6 +12,7 @@ import { JwtService } from 'src/app/services/jwt.service';
 })
 export class NaviComponent implements OnInit {
   user:User=new User();
+  
   costumersPath = './costumers/all';
   carsPath='./cars/all';
   brandsPath='./brands/all';
@@ -24,9 +25,12 @@ export class NaviComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+   
   }
   checkToLogin(){
     if(this.authService.IsAuthhenticated()){
+      this.user.firstName="Melek";
+      this.user.lastName="Karaca";
       console.log("true");
       return true;
     }else{
@@ -44,8 +48,8 @@ export class NaviComponent implements OnInit {
   }
  
   logOut(){
-   localStorage.removeItem("token"); //sorun var ilgilen
-    this.toastrService.success("Çıkış Yapıldı");
-    this.router.navigate(["/"])
+  //  localStorage.removeItem("token"); //sorun var ilgilen
+  //   this.toastrService.success("Çıkış Yapıldı");
+  //   this.router.navigate(["/"])
   }
 }
