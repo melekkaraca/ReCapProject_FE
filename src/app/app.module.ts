@@ -25,6 +25,7 @@ import { ColorAllComponent } from './components/color-all/color-all.component';
 import { CarFilterComponent } from './components/car-filter/car-filter.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { RegisterComponent } from './components/register/register.component';
+import { JwtService } from './services/jwt.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +44,7 @@ import { RegisterComponent } from './components/register/register.component';
     ColorAllComponent,
     CarFilterComponent,
     PaymentComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,9 +57,9 @@ import { RegisterComponent } from './components/register/register.component';
         positionClass:"toast-bottom-right",
       }
     ),
-    NgbModule
+    NgbModule,
   ],
-  providers: [
+  providers: [JwtService,
     {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}
   ],
   bootstrap: [AppComponent]

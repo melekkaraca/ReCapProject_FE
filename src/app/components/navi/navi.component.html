@@ -33,12 +33,23 @@
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Ara</button>
         </form>
-        <ul class="navbar-nav d-flex">  
-          <li class="nav-item"> 
-            <button class="btn btn-sm btn-success" formControlName="btnRegister" visible="false" type="submit" routerLink="register">Kayıt Ol</button>
+        <ul class="navbar-nav d-flex" *ngIf="checkToLogin()==true">  
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{this.user.firstName}} {{this.user.lastName}}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="ulLoginActive"  >
+              <li><a class="dropdown-item" href="#">Hesabım</a></li>
+              <li><a class="dropdown-item" href="#">Kiralamalarım</a></li>
+              <li><a class="dropdown-item" [href]="logOut()">Çıkış Yap</a></li>
+            </ul>
           </li>
-          <li class="nav-item">
-            <button class="btn btn-sm btn-success" formControlName="btnLogin" type="submit" routerLink="login">Giriş Yap</button>
+        </ul>
+        <ul *ngIf="checkToLogin()==false">
+          <li class="nav-item"> 
+            <button class="btn btn-sm btn-success"  type="submit" routerLink="register">Kayıt Ol</button>
+         /
+            <button class="btn btn-sm btn-success" type="submit" routerLink="login">Giriş Yap</button>
           </li>
         </ul>
       </div>
